@@ -1,5 +1,7 @@
 FROM debian:wheezy
 
+RUN sed -i "s%http://httpredir.debian.org%http://ftp.us.debian.org%g" /etc/apt/sources.list
+
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN groupadd -r redis && useradd -r -g redis redis
 
