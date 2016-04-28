@@ -15,7 +15,7 @@ RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/dow
     && rm /usr/local/bin/gosu.asc \
     && chmod +x /usr/local/bin/gosu
 
-ENV REDIS_VERSION 2.4.14
+ENV REDIS_VERSION 2.4.18
 ENV REDIS_DOWNLOAD_URL https://github.com/antirez/redis/archive/${REDIS_VERSION}.zip
 
 RUN buildDeps='gcc libc6-dev make unzip'; \
