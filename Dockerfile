@@ -15,8 +15,8 @@ RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/dow
     && rm /usr/local/bin/gosu.asc \
     && chmod +x /usr/local/bin/gosu
 
-ENV REDIS_VERSION 2.4.18
-ENV REDIS_DOWNLOAD_URL https://github.com/antirez/redis/archive/2.4.18.zip
+ENV REDIS_VERSION 2.4.14
+ENV REDIS_DOWNLOAD_URL https://github.com/antirez/redis/archive/${REDIS_VERSION}.zip
 
 RUN buildDeps='gcc libc6-dev make unzip'; \
     set -x \
@@ -26,8 +26,8 @@ RUN buildDeps='gcc libc6-dev make unzip'; \
     && curl -sSL "$REDIS_DOWNLOAD_URL" -o redis.zip \
     && unzip redis.zip -d /usr/src/redis \
     && rm redis.zip \
-    && make -C /usr/src/redis/redis-2.4.18 \
-    && make -C /usr/src/redis/redis-2.4.18 install \
+    && make -C /usr/src/redis/redis-${REDIS_VERSION} \
+    && make -C /usr/src/redis/redis-${REDIS_VERSION} install \
     && rm -r /usr/src/redis \
     && apt-get purge -y --auto-remove $buildDeps
 
