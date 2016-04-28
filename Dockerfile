@@ -20,7 +20,7 @@ ENV REDIS_DOWNLOAD_URL https://github.com/antirez/redis/archive/${REDIS_VERSION}
 
 RUN buildDeps='gcc libc6-dev make unzip'; \
     set -x \
-    && apt-get update && apt-get install -y $buildDeps --no-install-recommends \
+    && apt-get clean && apt-get update && apt-get install -y $buildDeps --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /usr/src/redis \
     && curl -sSL "$REDIS_DOWNLOAD_URL" -o redis.zip \
